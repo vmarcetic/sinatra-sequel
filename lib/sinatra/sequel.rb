@@ -20,7 +20,7 @@ module Sinatra
       @database ||=
         Sequel.connect(database_url, :encoding => 'utf-8')
         Sequel::Model.plugin(:json_serializer)
-        Sequel::Model.plugin(:timestamps)
+        Sequel::Model.plugin(:timestamps, :create=>:created_at, :update=>:updated_at)
     end
 
     def migration(name, &block)
